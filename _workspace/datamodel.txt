@@ -28,9 +28,9 @@ Ordering:
   Board
     bin/rails generate scaffold board name:string
   Post
-    bin/rails generate scaffold post board_id:integer user_id:integer title:string body:string
+    bin/rails generate scaffold post board:references user:references title:string body:string
   Comment
-    bin/rails generate model comment post_id user_id:integer body:string
+    bin/rails generate model comment post:references user:references body:string
     
 After
 
