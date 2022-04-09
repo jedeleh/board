@@ -1,0 +1,53 @@
+>---==> CHECK allows for / mentions nested comments?
+
+>---==> before generating anything, check the man pages on using references (or
+something like that) in the commandline for associations
+
+  # need to make the associations. 
+  # messages:Message[]    (key is on message table)
+  # comments:Comment[]    (key is on comment table)
+
+>---==> do we even need to model the board? probably not, but it gives us a
+place to hang the messages/threads
+
+
+TODO:
+
+  Setup Github
+  Setup postgres
+  Setup devise
+  Find some thing to make it looking nice. use bootstrap?
+  Figure out how to load it up to Heroku
+  
+
+
+Ordering:
+  User
+    bin/rails generate scaffold user name:string email:string
+    bin/rails generate devise User
+  Board
+    bin/rails generate scaffold board name:string
+  Post
+    bin/rails generate scaffold post board_id:integer user_id:integer title:string body:string
+  Comment
+    bin/rails generate model comment post_id user_id:integer body:string
+    
+After
+
+
+
+Project Requirements
+  Upload finished project to GitHub
+  √ Use latest version of Rails 5 or greater
+  √ Use Postgres for the database
+  √ Use Ruby 2.6 or newer (we use 2.6.9 on our main project)
+  Use Rspec to add tests that cover critical behavior
+  What to test & how to test is up to you
+
+Bonus features (not required, but nice to have)
+  Style using Bootstrap, Tailwinds, or a CSS library of your choice
+  Add a modal for logging in
+  Add a modal for creating a new post
+  Paginate posts#index and/or posts#show (comments)
+  Deploy project to Heroku (make an account for free)
+ 
