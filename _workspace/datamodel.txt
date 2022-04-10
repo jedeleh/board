@@ -23,10 +23,8 @@ Ordering:
     √ bin/rails generate model user name:string email:string
     √ bin/rails generate devise User
     -----
-  Board
-    bin/rails generate scaffold board name:string
   Post
-    bin/rails generate scaffold post board:references user:references title:string body:string
+    bin/rails generate scaffold post user:references title:string body:string
   Comment
     bin/rails generate model comment post:references user:references body:string
     
