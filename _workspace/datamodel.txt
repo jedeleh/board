@@ -1,30 +1,28 @@
->---==> CHECK allows for / mentions nested comments?
+>---==> Comments are only attached to messages, not other comments. 
 
->---==> before generating anything, check the man pages on using references (or
-something like that) in the commandline for associations
+>---==> why did I bother with a Board class? It wasn't only to tie groups of
+messages together--that's beyond the purview of this task--but also to give the
+application a kind of context. The entry point into the application is the show page
+for a single board, and simply has the list of messages associated with the board.
 
-  # need to make the associations. 
-  # messages:Message[]    (key is on message table)
-  # comments:Comment[]    (key is on comment table)
-
->---==> do we even need to model the board? probably not, but it gives us a
-place to hang the messages/threads
-
+>---==> comments should stay in some kind or order. sort them down descending...
 
 TODO:
 
-  Setup Github
-  Setup postgres
-  Setup devise
+  √ Setup Github
+  √ Setup postgres
+  √ Setup devise
+
+  Setup rspec
+
   Find some thing to make it looking nice. use bootstrap?
   Figure out how to load it up to Heroku
   
-
-
 Ordering:
   User
-    bin/rails generate scaffold user name:string email:string
-    bin/rails generate devise User
+    √ bin/rails generate model user name:string email:string
+    √ bin/rails generate devise User
+    -----
   Board
     bin/rails generate scaffold board name:string
   Post
@@ -33,8 +31,6 @@ Ordering:
     bin/rails generate model comment post:references user:references body:string
     
 After
-
-
 
 Project Requirements
   Upload finished project to GitHub
@@ -50,4 +46,6 @@ Bonus features (not required, but nice to have)
   Add a modal for creating a new post
   Paginate posts#index and/or posts#show (comments)
   Deploy project to Heroku (make an account for free)
+
+  
  
