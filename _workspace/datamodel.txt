@@ -24,14 +24,14 @@ Ordering:
     √ bin/rails generate devise User
     -----
   Post
-    bin/rails generate scaffold post user:references title:string body:string
+    √ bin/rails generate scaffold post user:references title:string body:string
   Comment
     bin/rails generate model comment post:references user:references body:string
     
 After
 
 Project Requirements
-  Upload finished project to GitHub
+  √ Upload finished project to GitHub
   √ Use latest version of Rails 5 or greater
   √ Use Postgres for the database
   √ Use Ruby 2.6 or newer (we use 2.6.9 on our main project)
@@ -47,3 +47,33 @@ Bonus features (not required, but nice to have)
 
   
  
+
+Rails:
+  application_record
+  benchmark
+  channel
+  controller
+      create  app/controllers/foo_controller.rb
+      invoke  erb
+      create    app/views/foo
+      invoke  rspec
+      create    spec/requests/foo_spec.rb
+      invoke  helper
+      create    app/helpers/foo_helper.rb
+      invoke    rspec
+      create      spec/helpers/foo_helper_spec.rb
+  generator
+  helper
+  integration_test
+  jbuilder
+  job
+  mailbox
+  mailer
+  migration
+  model
+  resource
+  responders_controller
+  scaffold
+  scaffold_controller
+  system_test
+  task
