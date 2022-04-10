@@ -26,7 +26,8 @@ Ordering:
   Post
     √ bin/rails generate scaffold post user:references title:string body:string
   Comment
-    bin/rails generate model comment post:references user:references body:string
+    √ bin/rails generate model comment post:references user:references body:string
+    bin/rails generate controller Comments create update show
     
 After
 
