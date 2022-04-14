@@ -1,13 +1,13 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
 
-  # GET /posts or /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.all.order(created_at: :desc)
   end
 
   # GET /posts/1 or /posts/1.json
   def show
+    Post.find_by(params[:id])
   end
 
   # GET /posts/new
@@ -17,6 +17,8 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    # missing error handling if the post isn't found
+    Post.find_by(id: params[:id])
   end
 
   # POST /posts or /posts.json

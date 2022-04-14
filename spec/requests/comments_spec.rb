@@ -1,16 +1,26 @@
 require 'rails_helper'
 
 RSpec.describe "Comments", type: :request do
-  describe "GET /create" do
-    it "returns http success" do
-      get "/comments/create"
-      expect(response).to have_http_status(:success)
-    end
+  describe "POST /create" do
+    # it "returns http success" do
+    #   user = create(:user)
+    #   post = create(:post, user: user)
+    #   parameters = {
+    #     user: user.id,
+    #     post: post.id,
+    #     body: "a neat story"
+    #   }
+      
+    #   post "/comments/create", params: parameters, format: :json
+    #   post :create, params: parameters, format: :json 
+    #   expect(response).to have_http_status(:success)
+    # end
+    pending
   end
 
   describe "GET /update" do
     it "returns http success" do
-      get "/comments/update"
+      post "/comments/update"
       expect(response).to have_http_status(:success)
     end
   end
@@ -21,5 +31,4 @@ RSpec.describe "Comments", type: :request do
       expect(response).to have_http_status(:success)
     end
   end
-
 end

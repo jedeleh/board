@@ -1,11 +1,32 @@
->---==> Comments are only attached to messages, not other comments. 
+>---==> What indexes?
+I'm optimizing for lookup because reading is far more frequent than commenting.
+  1. fast lookup for showing the board--reading is more frequent than posting
 
->---==> why did I bother with a Board class? It wasn't only to tie groups of
-messages together--that's beyond the purview of this task--but also to give the
-application a kind of context. The entry point into the application is the show page
-for a single board, and simply has the list of messages associated with the board.
+    posts.created_at
 
->---==> comments should stay in some kind or order. sort them down descending...
+    CREATE INDEX idx_created_at ON posts (created_at);
+
+  2. do we want one to optimize the lookup of comments for post? reasoning: as
+    is, there's no need to lookup all comments in the system.
+
+    posts.comments.created_at, posts.comments.post_id
+
+    CREATE INDEX idx_created_at_post_id ON comments (created_at, post_id);
+    
+
+>---==> 
+
+
+
+>---==> 
+  Comments are only attached to messages, not other comments. Things get super
+  fun if we have nested threads.
+
+>---==> 
+  I opted not to 
+
+>---==> 
+  comments and posts are ordered by created_at, descending order
 
 TODO:
 
@@ -14,9 +35,9 @@ TODO:
   √ Setup devise
 
   Setup rspec
+  Per Chris S. I focus on the backend aspects of the application.
 
-  Find some thing to make it looking nice. use bootstrap?
-  Figure out how to load it up to Heroku
+  MAYBE: Figure out how to load it up to Heroku
   
 Ordering:
   User
@@ -27,15 +48,15 @@ Ordering:
     √ bin/rails generate scaffold post user:references title:string body:string
   Comment
     √ bin/rails generate model comment post:references user:references body:string
-    bin/rails generate controller Comments create update show
+    √ bin/rails generate controller Comments create update show
     
 After
 
 Project Requirements
-  √ Upload finished project to GitHub
-  √ Use latest version of Rails 5 or greater
+r √ Upload finished project to GitHub
+  √ Use latest version of Rails 5 or greater: using rails 7
   √ Use Postgres for the database
-  √ Use Ruby 2.6 or newer (we use 2.6.9 on our main project)
+  √ Use Ruby 2.6 or newer (we use 2.6.9 on our main project): using Ruby 3
   Use Rspec to add tests that cover critical behavior
   What to test & how to test is up to you
 
@@ -48,33 +69,17 @@ Bonus features (not required, but nice to have)
 
   
  
+Testing:
 
-Rails:
-  application_record
-  benchmark
-  channel
-  controller
-      create  app/controllers/foo_controller.rb
-      invoke  erb
-      create    app/views/foo
-      invoke  rspec
-      create    spec/requests/foo_spec.rb
-      invoke  helper
-      create    app/helpers/foo_helper.rb
-      invoke    rspec
-      create      spec/helpers/foo_helper_spec.rb
-  generator
-  helper
-  integration_test
-  jbuilder
-  job
-  mailbox
-  mailer
-  migration
-  model
-  resource
-  responders_controller
-  scaffold
-  scaffold_controller
-  system_test
-  task
+Models:
+  Posts:
+    - test sorting
+    - test validation
+  Comments
+    - test sorting
+    - test validation
+    - test only getting the comments for a message.
+Controllers:
+  Posts:
+    - make sure user logged in
+    - 
